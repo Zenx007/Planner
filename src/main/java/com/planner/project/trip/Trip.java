@@ -9,4 +9,10 @@ import java.util.UUID;
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    private String destination;
+
+    @Column(name = "starts_at", nullable = false)
+    private LocalDateTime startsAt;
 }
