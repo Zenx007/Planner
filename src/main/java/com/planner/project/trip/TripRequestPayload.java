@@ -1,0 +1,8 @@
+package com.planner.project.trip;
+
+import org.apache.tomcat.util.codec.binary.StringUtils;
+
+import java.util.List;
+
+public record TripRequestPayload (String Destination, String starts_at, String ends_at, List<String> emails_to_invite, String owner_email, String owner_name){
+}
