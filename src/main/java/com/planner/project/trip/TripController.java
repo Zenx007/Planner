@@ -3,6 +3,7 @@ package com.planner.project.trip;
 import com.planner.project.participant.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,8 @@ public class TripController {
     @Autowired
     private TripRepository repository;
 
-    public ResponseEntity<String> createTrip(@RequestBody TripRequestPayload) {
+    @PostMapping
+    public ResponseEntity<String> createTrip(@RequestBody TripRequestPayload payload) {
 
         Trip newTrip = new Trip(payload);
 
