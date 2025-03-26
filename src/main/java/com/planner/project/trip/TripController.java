@@ -66,10 +66,11 @@ public class TripController {
         if (trip.isPresent()) {
             Trip rawTrip = trip.get();
             this.participantService.triggerConfirmationEmailToParticipants(id);
+
             return ResponseEntity.ok(rawTrip);
         }
 
-        return trip.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return ResponseEntity.notFound().build();
 
     }
 }
