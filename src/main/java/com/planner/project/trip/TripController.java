@@ -65,6 +65,8 @@ public class TripController {
 
         if (trip.isPresent()) {
             Trip rawTrip = trip.get();
+            rawTrip.setIsConfirmed(true);
+            this.repository.save(rawTrip);
             this.participantService.triggerConfirmationEmailToParticipants(id);
 
             return ResponseEntity.ok(rawTrip);
