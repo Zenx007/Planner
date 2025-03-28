@@ -13,5 +13,10 @@ public class ParticipantController {
     @PostMapping("/{id}/confirm")
     public ResponseEntity<Participant> confirmParticipant(@PathVariable UUID id, @RequestBody ParticipantRequestPayload payload){
         Optional<Participant> participant = this.repository.findById(id);
+
+        if(participant.isPresent()){
+            Participant rawParticipant = participant.get()/
+        }
     }
+
 }
