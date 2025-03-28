@@ -1,5 +1,6 @@
 package com.planner.project.participant;
 
+import com.planner.project.trip.Trip;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -20,6 +21,10 @@ public class Participant {
 
     @Column (nullable = false)
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name= "trip_id", nullable = false)
+    private Trip trip;
 
 
 
