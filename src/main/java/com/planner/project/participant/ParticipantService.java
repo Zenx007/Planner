@@ -1,5 +1,7 @@
 package com.planner.project.participant;
 
+import com.planner.project.trip.Trip;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,14 +15,28 @@ public class ParticipantService {
 
     public void registerParticipantsToEvent(List<String> participantsToInvite, Trip trip) {
 
-        List<Participant> participants = particpantsToInvite.stream().map(email-> new Participant(email,trio)).toList();
+        List<Participant> participants = participantsToInvite.stream().map(email-> new Participant(email,trio)).toList();
         this.repository.saveAll(participants);
 
         System.out.println(participants.get(0).getId());
 
     }
 
+    public ParticipantCreateResponse registerParticipantToEvent(String email, Trip trip){
+        Participant newParticipant = new Participant(email, trip);
+        this.repository.save(newParticipant);
+
+        public void registerParticipantsToEvent(List<String> participantsToInvite, UUID tripId ){};
+        return new ParticipantCreateResponse(newParticipant.getId());
+    }
+
     public void triggerConfirmationEmailToParticipants(UUID tripId) {
+
+        public void triggerConfirmationEmailToParticipant(String email){};
+
+        public List<ParticipantData> getAllParticipantsFromEvent(UUID tripId){
+            return this.repository.findByTripId(tripId).stream().map(participant -> new ParticipantData(participant.getId(), participant.getName(), participant.getEmail(), participant.getIsConfirmed())).toList();
+        }
 
     }
 }
