@@ -26,6 +26,13 @@ public class Participant {
     @JoinColumn(name= "trip_id", nullable = false)
     private Trip trip;
 
+    public Participant(String email, Trip trip){
+        this.email = email;
+        this.trip = trip;
+        this.isConfirmed = false;
+        this.name = "";
+    }
+
 
 
 }
