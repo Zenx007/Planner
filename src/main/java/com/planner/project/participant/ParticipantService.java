@@ -8,7 +8,15 @@ import java.util.UUID;
 @Service
 public class ParticipantService {
 
-    public void registerParticipantsToEvent(List<String> participantsToInvite, UUID id) {
+    @Autowired
+    private ParticipantRepository repository;
+
+    public void registerParticipantsToEvent(List<String> participantsToInvite, Trip trip) {
+
+        List<Participant> participants = particpantsToInvite.stream().map(email-> new Participant(email,trio)).toList();
+        this.repository.saveAll(participants);
+
+        System.out.println(participants.get(0).getId());
 
     }
 
