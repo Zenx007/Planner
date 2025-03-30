@@ -95,4 +95,12 @@ public class TripController {
         return ResponseEntity.notFound().build();
 
     }
+
+    @GetMapping("/{id}/participants")
+    public ResponseEntity<List<ParticipantData>> getAllParticipants(@PathVariable UUID id) {
+        List<ParticipantData> participantList = this.participantService.getAllParticipantsFromEvent(id);
+
+        return ResponseEntity.ok(participantList);
+    }
+
 }
