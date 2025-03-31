@@ -2,11 +2,19 @@ package com.planner.project.participant;
 
 import com.planner.project.trip.Trip;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "participants")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Participant {
     
     @Id
