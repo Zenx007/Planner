@@ -15,7 +15,7 @@ public class ParticipantService {
 
     public void registerParticipantsToEvent(List<String> participantsToInvite, Trip trip) {
 
-        List<Participant> participants = participantsToInvite.stream().map(email-> new Participant(email,trio)).toList();
+        List<Participant> participants = participantsToInvite.stream().map(email-> new Participant(email,trip)).toList();
         this.repository.saveAll(participants);
 
         System.out.println(participants.get(0).getId());
@@ -26,17 +26,16 @@ public class ParticipantService {
         Participant newParticipant = new Participant(email, trip);
         this.repository.save(newParticipant);
 
-        public void registerParticipantsToEvent(List<String> participantsToInvite, UUID tripId ){};
         return new ParticipantCreateResponse(newParticipant.getId());
     }
 
-    public void triggerConfirmationEmailToParticipants(UUID tripId) {
+    public void triggerConfirmationEmailToParticipants(UUID tripId){};
 
-        public void triggerConfirmationEmailToParticipant(String email){};
+        public void triggerConfirmationEmailToParticipant (String email){};
 
         public List<ParticipantData> getAllParticipantsFromEvent(UUID tripId){
             return this.repository.findByTripId(tripId).stream().map(participant -> new ParticipantData(participant.getId(), participant.getName(), participant.getEmail(), participant.getIsConfirmed())).toList();
         }
 
     }
-}
+
