@@ -84,11 +84,7 @@ public class TripController {
     }
 
     @PostMapping("/{id}/invite")
-    public ResponseEntity<ParticipantCreateResponse> inviteParticipant(@PathVariable UUID id;
-
-    @RequestBody
-    ParticipantRequestPayload payload)
-
+    public ResponseEntity<ParticipantCreateResponse> inviteParticipant(@PathVariable UUID id, @RequestBody ParticipantRequestPayload payload)
     {
 
         Optional<Trip> trip = this.repository.findById(id);
