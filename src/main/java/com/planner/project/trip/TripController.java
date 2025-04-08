@@ -26,6 +26,12 @@ public class TripController {
     @Autowired
     private TripRepository repository;
 
+    @Autowired
+    private ActivityService activityService;
+
+    @Autowired
+    private LinkService linkService;
+
     @PostMapping
     public ResponseEntity<TripCreateResponse> createTrip(@RequestBody TripRequestPayload payload) {
 
