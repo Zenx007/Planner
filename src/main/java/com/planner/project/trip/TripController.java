@@ -147,4 +147,22 @@ public class TripController {
         return ResponseEntity.notFound().build();
 
     }
+
+    @PostMapping
+    public ResponseEntity<LinkResponse> registerLink(@PathVariable UUID id, @RequestBody LinkRequestPayload payload) {
+
+        Optional<Trip> trip = this.repository.findById(id);
+
+        if(trip.isPresent()){
+            Trip rawTrip = trip.get();
+
+
+            LinkResponse linkResponse = this.linkService.registerLink(payload, rawTrip);
+
+
+            return ResponseEntity.ok(linkResponse);
+        }
+        return ResponseEntity.notFound().build();
+
+    }
 }
