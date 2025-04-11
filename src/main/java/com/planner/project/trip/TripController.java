@@ -105,7 +105,16 @@ public class TripController {
 
             return ResponseEntity.notFound().build();
             }
-            
+
+
+            @GetMapping
+            public ResponseEntity<ActivityData> getAllActivities (@PathVariable UUID id) {
+        List<ActivityData> activityDataList = this.activityService.getAllActivitiesFromId(id);
+
+        return ResponseEntity.ok(activityDataList);
+    }
+
+    
     @PostMapping("/{id}/invite")
     public ResponseEntity<ParticipantCreateResponse> inviteParticipant(@PathVariable UUID id, @RequestBody ParticipantRequestPayload payload)
     {
