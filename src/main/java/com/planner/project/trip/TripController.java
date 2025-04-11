@@ -89,6 +89,23 @@ public class TripController {
 
     }
 
+
+    @PostMapping("{id}/activities")
+    public ResponseEntity<ActivityResponse>registerActivity(@PathVariable UUID id, @RequestBody ActivityRequestPayload payload) {
+            Optional<Trip> trip = trip.repository.findById(id);
+
+            if (trip.isPresent()) {
+
+                Trip rawTrip =  trip.get();
+
+                ActivityResponse activityResponse = this.activityService.registerActivity(payload, rawTrip);
+
+                return ResponseEntity.ok(activityResponse);
+            }
+
+            return ResponseEntity.notFound().build();
+            }
+            
     @PostMapping("/{id}/invite")
     public ResponseEntity<ParticipantCreateResponse> inviteParticipant(@PathVariable UUID id, @RequestBody ParticipantRequestPayload payload)
     {
