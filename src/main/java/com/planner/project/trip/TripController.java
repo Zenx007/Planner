@@ -60,7 +60,7 @@ public class TripController {
 
     }
 
-    @PutMapping("/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<Trip> updateTrip(@PathVariable UUID id, @RequestBody TripRequestPayload payload) {
 
         Optional<Trip> trip = this.repository.findById(id);
@@ -151,7 +151,7 @@ public class TripController {
 
     }
 
-    @PostMapping
+    @PostMapping("/{id}/links")
     public ResponseEntity<LinkResponse> registerLink(@PathVariable UUID id, @RequestBody LinkRequestPayload payload) {
 
         Optional<Trip> trip = this.repository.findById(id);
