@@ -1,5 +1,10 @@
 package com.planner.project.trip;
 
+import com.planner.project.activity.ActivityData;
+import com.planner.project.activity.ActivityRequestPayload;
+import com.planner.project.activity.ActivityResponse;
+import com.planner.project.activity.ActivityService;
+import com.planner.project.link.LinkService;
 import com.planner.project.participant.ParticipantCreateResponse;
 import com.planner.project.participant.ParticipantData;
 import com.planner.project.participant.ParticipantRequestPayload;
@@ -107,14 +112,21 @@ public class TripController {
             }
 
 
-            @GetMapping
-            public ResponseEntity<ActivityData> getAllActivities (@PathVariable UUID id) {
+            @GetMapping("{id}/activities")
+            public ResponseEntity<ActivityData>> getAllActivities (@PathVariable UUID id) {
         List<ActivityData> activityDataList = this.activityService.getAllActivitiesFromId(id);
 
         return ResponseEntity.ok(activityDataList);
     }
 
-    
+    @GetMapping("{id}/participants")
+    public ResponseEntity<ParticipantData>> getAllParticipants(@PathVariable UUID id) {
+
+        List<ParticipantData> participantsList = this.participantService.getAllParticipantsFromEvent(id);
+
+        return ResponseEntity.ok(participantList);
+    }
+
     @PostMapping("/{id}/invite")
     public ResponseEntity<ParticipantCreateResponse> inviteParticipant(@PathVariable UUID id, @RequestBody ParticipantRequestPayload payload)
     {
